@@ -213,6 +213,19 @@ Class Data
     }
 }
 
+Class CustomCSS
+{
+    public function Create()
+    {
+
+    }
+
+    public function Update()
+    {
+        
+    }
+}
+
 Class AdminCP
 {
     private $filename = SETTINGS_DB;
