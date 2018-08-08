@@ -47,9 +47,10 @@ $admin->Logout();
                 <div class="menu">
                     <ul>
                         <li><a href="admin.php" <?php echo (!isset($_GET['page'])?'class="current-nav"':''); ?>><i class="fas fa-tasks"></i> General Settings</a></li>
-                        <li><a href="?page=info" <?php echo (isset($_GET['page']) && $_GET['page'] == "info"?'class="current-nav"':''); ?>><i class="fas fa-info-circle"></i> Information Settings</a></li>
+                        <li><a href="?page=info" <?php echo (isset($_GET['page']) && $_GET['page'] == "info"?'class="current-nav"':''); ?>><i class="fas fa-info-circle"></i> Information</a></li>
+                        <li><a href="?page=seo" <?php echo (isset($_GET['page']) && $_GET['page'] == "seo"?'class="current-nav"':''); ?>><i class="far fa-lightbulb"></i> Google SEO</a></li>
                         <li><a href="?page=servers" <?php echo (isset($_GET['page']) && $_GET['page'] == "servers"?'class="current-nav"':''); ?>><i class="fas fa-server"></i> Servers</a></li>
-                        <li><a href="?page=colors" <?php echo (isset($_GET['page']) && $_GET['page'] == "colors"?'class="current-nav"':''); ?>><i class="fas fa-paint-brush"></i> Color Settings</a></li>
+                        <li><a href="?page=colors" <?php echo (isset($_GET['page']) && $_GET['page'] == "colors"?'class="current-nav"':''); ?>><i class="fas fa-paint-brush"></i> Colors</a></li>
                         <li class="right"><a href="?logout=1"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     </ul>
                 </div>
@@ -380,6 +381,8 @@ $admin->Logout();
                         </div>
                     </div>
                 </div>
+            <?php elseif(isset($_GET['page']) && $_GET['page'] == 'seo'): ?>
+
             <?php else: ?>
                 <div class="content-box col s12">
                     <form method="POST">

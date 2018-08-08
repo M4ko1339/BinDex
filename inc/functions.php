@@ -106,14 +106,12 @@ Class Data
                 )
             ),
 
-            // Servers
-            'servers' => array(
-                0 => array(
-                    "game" => 0,
-                    "ip"   => '',
-                    "port" => ''
-                ),
-            ),
+            // Google SEO
+            'seo' => array(
+                'subject' => "",
+                'keywords' => "",
+                'description' => "",
+            )
         );
 
         if(file_exists($this->location . $this->filename))
@@ -222,7 +220,7 @@ Class CustomCSS
 
     public function Update()
     {
-        
+
     }
 }
 
