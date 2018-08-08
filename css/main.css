@@ -1,0 +1,148 @@
+body
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.btn
+{
+    background-color: #4CAF50 !important;
+    padding: 1px 10px 5px 10px;
+    height: 37px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    margin: 0px 0px 10px 0px !important;
+}
+
+button
+{
+    min-width: 80px;
+}
+
+.btn:hover, .btn:active, .btn:focus
+{
+    background-color: #3D8A3F !important;
+}
+
+.back-button i
+{
+    padding: 1px 0px 0px 0px !important;
+}
+
+.icon-button
+{
+    margin-left: 5px !important;
+}
+
+.icon-button i
+{
+    padding: 1px 0px 0px 1px !important;
+}
+
+.info-button
+{
+    width: 100%;
+}
+
+.active
+{
+    border-color: red !important;
+}
+
+.input-field
+{
+    padding: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+input:not([type]):focus, input[type=text]:not(.browser-default):focus, input[type=password]:not(.browser-default):focus
+{
+    border-bottom: 1px #5CB75F solid !important;
+    box-shadow: 0px !important;
+}
+
+.input-field input[type="text"].valid
+{
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.input-field.col label
+{
+    left: 0px !important;
+}
+
+
+[type="checkbox"]+span:not(.lever)
+{
+    line-height: 20px !important;
+    padding-left: 25px !important;
+    margin-right: 10px;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after
+{
+    background-color: #449C47;
+    border-color: #449C47;
+}
+
+[type="radio"]+span:not(.lever)
+{
+    line-height: 22px !important;
+    padding-left: 25px !important;
+    margin-right: 10px;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after
+{
+    background-color: #449C47;
+    border-color: #449C47;
+}
+
+input[type="text"], input[type="password"], option, textarea
+{
+    color: #DDD;
+}
+
+table
+{
+    border: 1px #222 solid;
+}
+
+th
+{
+    background-color: #222;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+tr:nth-child(odd)
+{
+    background-color: #222 !important;
+}
+
+td
+{
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.response
+{
+    height: 40px;
+    margin-top: 10px !important;
+    padding: 8px 10px 10px 10px !important;
+    text-align: center;
+    border-radius: 3px;
+    color: #EEE;
+}
+
+form
+{
+    margin-bottom: 0px !important;
+}

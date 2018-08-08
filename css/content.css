@@ -1,0 +1,71 @@
+.slider
+{
+    height: 400px !important;
+    z-index: 1 !important;
+    top: 0;
+    margin-bottom: 10px;
+}
+
+.slider .indicators .indicator-item
+{
+    display: none;
+}
+
+.slider .slides
+{
+}
+
+.slides img
+{
+    opacity: 0.8;
+}
+
+.slider .slides li img
+{
+    height: 100% !important;
+}
+
+.content
+{
+
+}
+
+.content-content
+{
+    padding: 0px !important;
+}
+
+.card
+{
+    margin-top: 50px;
+    background-color: transparent;
+}
+
+.card-icon
+{
+    font-size: 5rem;
+    text-align: center;
+    padding: 10px;
+}
+
+.card-content
+{
+    padding: 5px !important;
+}
+
+.card-content p
+{
+
+}
+
+.fab
+{
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.6rem !important;
+}
+
+.fab:hover
+{
+    color: #FFF;
+}
