@@ -11,8 +11,10 @@
 - Custom Feature Boxes
 - Custom Icons
 - Custom Menu Items
+- Custom Rules Page
 - Google SEO (Maximize Visitors)
-
+- Easy and User Friendly Install Page
+- Failsafe Install (Checking for missing extensions and modules)
 
 ### Included Plugins
 - Custom Servers Page
