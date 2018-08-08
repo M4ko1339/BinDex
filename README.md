@@ -20,6 +20,6 @@
 
 
 ### Credits
-FontAwesome.io - Custom Icons
+FontAwesome.io - Custom Icons (https://fontawesome.com/)
 
 SourceQuery Library - xPaw (https://github.com/xPaw)
