@@ -73,14 +73,14 @@ Class Data
 
             // Rules Colors
             'rules_text_color' => "rgba(255, 255, 255, 1)",
-            'rules_odd_row'    => "rgba(2, 2, 2, 1)",
-            'rules_even_row'   => "rgba(1, 1, 1, 1)",
+            'rules_odd_row'    => "rgba(20, 20, 20, 1)",
+            'rules_even_row'   => "rgba(0, 0, 0, 1)",
 
             'rules' => array(
                 0 => "Rule 1",
                 1 => "Rule 2",
                 2 => "Rule 3",
-                3 => "",
+                3 => "Rule 4",
                 4 => "",
                 5 => "",
                 6 => "",
@@ -108,8 +108,6 @@ Class Data
 
             // Google SEO
             'seo' => array(
-                'subject' => "",
-                'keywords' => "",
                 'description' => "",
             )
         );

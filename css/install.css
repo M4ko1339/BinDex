@@ -47,5 +47,5 @@ body
 
 input[type="text"], input[type="password"]
 {
-    color: #000;
+    color: #000 !important;
 }

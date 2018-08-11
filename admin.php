@@ -486,7 +486,39 @@ $admin->Logout();
                     ?>
                 <?php endif; ?>
             <?php elseif(isset($_GET['page']) && $_GET['page'] == 'seo'): ?>
+                <div class="content-box col s12">
+                    <form method="POST">
+                        <div class="col s12">
+                            <div class="section col s12">
+                                <div class="option-container col s12">
+                                    <div class="split-label col s12">
+                                        <label>Google SEO</label>
+                                    </div>
 
+                                    <div class="input-field col s12">
+                                        <input type="text" id="description" class="browser-default" value="<?php echo $data->Fetch('seo', 'description'); ?>" placeholder="" name="description" />
+                                        <label for="description">Website Description</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bottom col s12">
+                            <button type="submit" class="btn" name="save"><i class="material-icons">save</i></button>
+                        </div>
+                    </form>
+                </div>
+                <?php if(isset($_POST['save'])): ?>
+                    <?php
+
+                    $data->Update('seo', array(
+                        'description' => $_POST['description']
+                    ));
+
+                    echo '<script>location.replace("admin.php?page=seo");</script>';
+
+                    ?>
+                <?php endif; ?>
             <?php else: ?>
                 <div class="content-box col s12">
                     <form method="POST">

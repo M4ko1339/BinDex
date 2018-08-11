@@ -18,7 +18,8 @@ if(!$data->Installed())
 <head>
     <title><?php echo $data->Fetch('site_name'); ?></title>
     <meta http-equiv="content-type" charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="<?php echo $data->Fetch('seo', 'description'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -102,7 +102,7 @@ input:not([type]):focus, input[type=text]:not(.browser-default):focus, input[typ
 
 input[type="text"], input[type="password"], option, textarea
 {
-    color: #DDD;
+    color: #000;
 }
 
 table

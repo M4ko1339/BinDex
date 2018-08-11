@@ -7,7 +7,11 @@ Class Servers
 
     public function Create()
     {
-        $data = "";
+        $data = array(
+            "servers" => array(
+
+            )
+        );
 
         if(file_exists($this->location . $this->filename))
         {
