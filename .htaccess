@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^database/?$ - [F,L]
+RewriteRule ^database/settings.json?$ - [F,L]
+RewriteRule ^database/servers.json?$ - [F,L]
