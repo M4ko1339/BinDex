@@ -4,6 +4,7 @@ session_start();
 
 include('inc/settings.php');
 include('inc/functions.php');
+include('inc/servers.class.php');
 
 $data  = new Data();
 $admin = new AdminCP();
@@ -19,6 +20,8 @@ if(!isset($_SESSION['password']))
     header('Location: login.php');
     exit;
 }
+
+$srv = new Servers();
 
 $admin->Logout();
 
@@ -344,6 +347,11 @@ $admin->Logout();
                                     </div>
 
                                     <div class="input-field col s12">
+                                        <input type="text" id="color" class="browser-default" placeholder="blue" name="color" />
+                                        <label for="color">Box Header Color</label>
+                                    </div>
+
+                                    <div class="input-field col s12">
                                         <input type="text" id="server_ip" class="browser-default" value="<?php ?>" placeholder="" name="server_ip" />
                                         <label for="server_ip">Server IP</label>
                                     </div>
@@ -369,18 +377,114 @@ $admin->Logout();
                                 </div>
 
                                 <table class="server-table">
-                                    <tr>
-                                        <td>Garry's Mod</td>
-                                        <td>127.0.0.1</td>
-                                        <td>27015</td>
-                                        <td><i class="fas fa-pen-square green-text right"></i></td>
-                                        <td><i class="fas fa-trash-alt red-text right"></i></td>
-                                    </tr>
+                                    <?php foreach($srv->Fetch("servers") as $row): ?>
+                                        <?php $game = array_keys($games, $row['game']); ?>
+                                        <tr>
+                                            <td><?php echo $game[0]; ?></td>
+                                            <td><?php echo $row['ip']; ?></td>
+                                            <td><?php echo $row['port']; ?></td>
+                                            <td><a href="?page=servers&edit=<?php echo $row['id']; ?>"><i class="fas fa-pen-square green-text right"></i></a></td>
+                                            <td><a href="?page=servers&delete=<?php echo $row['id']; ?>"><i class="fas fa-trash-alt red-text right"></i></a></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <?php if(isset($_GET['edit']) && (int)$_GET['edit']): ?>
+                        <?php $data = $srv->Fetch("servers", $_GET['edit']-1); ?>
+                        <form method="POST">
+                            <div class="col s12">
+                                <div class="section col s12">
+                                    <div class="option-container col s12">
+                                        <div class="split-label col s12">
+                                            <label>Edit Server</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <select name="game">
+                                                <?php foreach($games as $row => $key): ?>
+                                                    <option value="<?php echo $key; ?>" <?php echo ($key == $data['game']?"selected":""); ?>><?php echo $row; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <label for="logo_color">Game</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <input type="text" id="color" class="browser-default" value="<?php echo $data['color']; ?>" placeholder="" name="color" />
+                                            <label for="color">Box Header Color</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <input type="text" id="server_ip" class="browser-default" value="<?php echo $data['ip']; ?>" placeholder="" name="server_ip" />
+                                            <label for="server_ip">Server IP</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <input type="text" id="server_port" class="browser-default"  value="<?php echo $data['port']; ?>" placeholder="" name="server_port" />
+                                            <label for="server_port">Server Port</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <button type="submit" class="btn" name="edit"><i class="material-icons">save</i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <?php if(isset($_POST['edit'])): ?>
+                        <?php if(!empty($_POST['server_ip'] && $_POST['server_port'] && $_POST['color'])): ?>
+                            <?php
+
+                            $srv->Update($_GET['edit']-1, "color", $_POST['color']);
+                            $srv->Update($_GET['edit']-1, "game", $_POST['game']);
+                            $srv->Update($_GET['edit']-1, "ip", $_POST['server_ip']);
+                            $srv->Update($_GET['edit']-1, "port", $_POST['server_port']);
+
+                            echo '<script>location.replace("admin.php?page=servers");</script>';
+
+                            ?>
+                        <?php else: ?>
+                            <div class="response col s12 red">
+                                All fields are required!
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+                <?php if(isset($_POST['add'])): ?>
+                    <?php if(!empty($_POST['server_ip'] && $_POST['server_port'] && $_POST['color'])): ?>
+                        <?php
+
+                        $srv->Add(array(
+                            "id"    => count($srv->Fetch("servers")) + 1,
+                            "color" => $_POST['color'],
+                            "game"  => $_POST['game'],
+                            "ip"    => $_POST['server_ip'],
+                            "port"  => $_POST['server_port']
+                        ));
+
+                        echo '<script>location.replace("admin.php?page=servers");</script>';
+
+                        ?>
+                    <?php else: ?>
+                        <div class="response col s12 red">
+                            All fields are required!
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+                <?php if(isset($_GET['delete']) && (int)$_GET['delete']): ?>
+                    <?php
+
+                    $srv->Delete($_GET['delete']-1);
+
+                    echo '<script>location.replace("admin.php?page=servers");</script>';
+
+                    ?>
+                <?php endif; ?>
             <?php elseif(isset($_GET['page']) && $_GET['page'] == 'seo'): ?>
 
             <?php else: ?>

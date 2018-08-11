@@ -69,3 +69,35 @@
 {
     color: #FFF;
 }
+
+.server-card
+{
+    margin-top: 20px;
+    border: 1px #222 solid;
+    padding: 0px !important;
+}
+
+.server-card-header
+{
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.server-card-content
+{
+    padding: 10px !important;
+}
+
+.card-content-line
+{
+    padding: 0px 0px 10px 0px !important;
+}
+
+.connect-button
+{
+    margin-top: 10px !important;
+    width: 100%;
+}

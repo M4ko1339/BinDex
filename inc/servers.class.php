@@ -7,15 +7,7 @@ Class Servers
 
     public function Create()
     {
-        $data = array(
-            "servers" => array(
-                0 => array(
-                    "game" => 4000,
-                    "ip"   => "127.0.0.1",
-                    "port" => 27015
-                )
-            )
-        );
+        $data = "";
 
         if(file_exists($this->location . $this->filename))
         {
@@ -34,36 +26,50 @@ Class Servers
         }
     }
 
-    public function Add($parameter, $value)
+    public function Add($data)
     {
         $get   = file_get_contents($this->location . $this->filename);
         $items = json_decode($get, true);
 
-        foreach($items as $item => $key)
-        {
-            if($item == $parameter)
-            {
-                var_dump($items[$i][$item] = $value);
-            }
-        }
+        $items["servers"][] = $data;
 
         $enc = json_encode($items);
-        $fh  = fopen($this->location . $this->filename, "a");
+        $fh  = fopen($this->location . $this->filename, "w");
         $fw  = fwrite($fh, $enc);
 
         fclose($fh);
     }
 
-    public function Update($parameter, $value)
+    public function Update($id, $parameter, $value)
     {
         $get   = file_get_contents($this->location . $this->filename);
         $items = json_decode($get, true);
 
-        foreach($items as $item => $key)
+        foreach($items["servers"] as $item => $key)
         {
-            if($item == $parameter)
+            if($item == $id)
             {
-                $items[$item] = $value;
+                $items["servers"][$item][$parameter] = $value;
+            }
+        }
+
+        $enc = json_encode($items);
+        $fh  = fopen($this->location . $this->filename, "w");
+        $fw  = fwrite($fh, $enc);
+
+        fclose($fh);
+    }
+
+    public function Delete($id)
+    {
+        $get   = file_get_contents($this->location . $this->filename);
+        $items = json_decode($get, true);
+
+        foreach($items["servers"] as $item => $key)
+        {
+            if($item == $id)
+            {
+                unset($items["servers"][$id]);
             }
         }
 

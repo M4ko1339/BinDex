@@ -1,63 +1,32 @@
 <?php
 
+require __DIR__ . '/SourceQuery/bootstrap.php';
+use xPaw\SourceQuery\SourceQuery;
+
+function SourceEngine($ip, $port)
+{
+    $Query = new SourceQuery();
+
+    try
+    {
+        $Query->Connect($ip, $port, 1, SourceQuery::SOURCE);
+
+        return $Query->GetInfo();
+    }
+    catch(Exception $e)
+    {
+        die($e->getMessage());
+    }
+    finally
+    {
+        $Query->Disconnect();
+    }
+}
+
 include('header.php');
 
 $srv = new Servers();
 
-$string = '{"servers":[{"game":4000,"ip":"127.0.0.1","port":27015}]}';
-$data = array(
-    0 => array(
-        "game" => 100,
-        "ip"   => '100.100.0.100',
-        "port" => 10200
-    )
-);
-
-$dec = json_decode($string, true);
-
-
-$new = json_encode(array(
-    1 => array(
-        "game" => 1022,
-        "ip"   => '1200.1200.0.1200',
-        "port" => 222
-)));
-
-$decode = json_decode($new, true);
-
-var_dump($decode);
-
-/*
-foreach( as $row)
-{
-    require __DIR__ . '/SourceQuery/bootstrap.php';
-
-    use xPaw\SourceQuery\SourceQuery;
-
-    define('SQ_SERVER_ADDR', $server);
-    define('SQ_SERVER_PORT', $port);
-    define('SQ_TIMEOUT',     1);
-    define('SQ_ENGINE',      SourceQuery::SOURCE);
-
-    $Query = new SourceQuery( );
-
-    try
-    {
-    	$Query->Connect(SQ_SERVER_ADDR, SQ_SERVER_PORT, SQ_TIMEOUT, SQ_ENGINE);
-
-    	$info    = $Query->GetInfo();
-    	$players = $Query->GetPlayers();
-    }
-    catch(Exception $e)
-    {
-    	die($e->getMessage());
-    }
-    finally
-    {
-    	$Query->Disconnect();
-    }
-}
-*/
 ?>
 
 <div class="row">
@@ -68,7 +37,39 @@ foreach( as $row)
             </div>
 
             <div class="content-content col s12">
+                <?php foreach($srv->Fetch("servers") as $row): ?>
+                    <?php $game = array_keys($games, $row['game']); ?>
+                    <?php $src = SourceEngine($row['ip'], $row['port']); ?>
+                    <div class="col s12 m4">
+                        <div class="server-card col s12">
+                            <div class="server-card-header <?php echo $row['color']; ?>">
+                                <?php echo substr($src['HostName'], 0, 36); ?>
+                            </div>
 
+                            <div class="server-card-content">
+                                <div class="card-content-line col s12">
+                                    <b>Game:</b> <?php echo $game[0]; ?>
+                                </div>
+
+                                <div class="card-content-line col s12">
+                                    <b>Gamemode:</b> <?php echo $src['ModDesc']; ?>
+                                </div>
+
+                                <div class="card-content-line col s12">
+                                    <b>Players:</b> <?php echo $src['Players']; ?> / <?php echo $src['MaxPlayers']; ?>
+                                </div>
+
+                                <div class="card-content-line col s12">
+                                    <b>Map:</b> <?php echo $src['Map']; ?>
+                                </div>
+
+                                <div class="card-content-line col s12">
+                                    <a href="steam://connect/<?php echo $row['ip']; ?>:<?php echo $row['port']; ?>" class="btn connect-button">Connect</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
