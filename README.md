@@ -12,14 +12,19 @@
 - Custom Icons
 - Custom Menu Items
 - Custom Rules Page
-- Google SEO (Maximize Visitors)
+- Google SEO (Maximize Google Search Ranking)
 - Easy and User Friendly Install Page
 - Failsafe Install (Checking for missing extensions and modules)
 
 ### Included Plugins
-- Custom Servers Page
+- Dynamic Servers Page (Supports all Source Games)
 
+### Planned Plugins
+- Dynamic Staff Page
+- Sourcebans / ULX Ban Page
+- Theme / Layout System
 
+NOTE: All plugins will be free.
 
 ### Credits
 FontAwesome.io - Custom Icons (https://fontawesome.com/)
