@@ -28,3 +28,13 @@
 FontAwesome.io - Custom Icons (https://fontawesome.com/)
 
 SourceQuery Library - xPaw (https://github.com/xPaw)
+
+
+## Screenshots
+
+![Index Page](https://puu.sh/BcIkw/0b33787bbf.png)
+![Servers Page](https://puu.sh/BcIvK/f0b7858bff.png)
+![Install Page](https://puu.sh/BcIFG/6a1f84830b.png)
+![AdminCP](https://puu.sh/BcIzy/e1ce4518af.png)
+![AdminCP](https://puu.sh/BcIAS/6675e49bff.png)
+![AdminCP](https://puu.sh/BcICz/e3940ca786.png)
