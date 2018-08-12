@@ -24,8 +24,6 @@
 - Sourcebans / ULX Ban Page
 - Theme / Layout System
 
-NOTE: All plugins will be free.
-
 ### Credits
 FontAwesome.io - Custom Icons (https://fontawesome.com/)
 
